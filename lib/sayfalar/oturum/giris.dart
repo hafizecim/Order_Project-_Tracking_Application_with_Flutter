@@ -12,6 +12,7 @@ class GirisSayfasi extends StatefulWidget {
 
 class _GirisSayfasiState extends State<GirisSayfasi> {
   Tema tema = Tema();
+  bool sifre_gozukme = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,7 +42,11 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                       borderRadius: BorderRadius.circular(100),
                       border: Border.all(color: renk("202F3A"), width: 15),
                     ),
-                    child: Icon(Icons.person, size: 110, color: const Color.fromARGB(255, 128, 24, 17),),
+                    child: Icon(
+                      Icons.person,
+                      size: 110,
+                      color: const Color.fromARGB(255, 128, 24, 17),
+                    ),
                   ),
                 ),
                 Container(
@@ -90,17 +95,36 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     top: 5,
                     bottom: 5,
                   ),
-                  child: TextFormField(
-                    obscureText: true, // Şifre alanı için gizleme
-                    decoration: tema.InputDec(
-                      "Şifrenizi girin",
-                      Icons.vpn_key_outlined,
-                      //letterSpacing: 5,
-                    ),
-                    style: GoogleFonts.quicksand(
-                      color: renk(metin_renk),
-                      // letterSpacing: 5,
-                    ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          obscureText:
+                              sifre_gozukme, // Şifre alanı için gizleme
+                          decoration: tema.InputDec(
+                            "Şifrenizi girin",
+                            Icons.vpn_key_outlined,
+                            //letterSpacing: 5,
+                          ),
+                          style: GoogleFonts.quicksand(
+                            color: renk(metin_renk),
+                            // letterSpacing: 5,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            sifre_gozukme =
+                                !sifre_gozukme; // eğer true ise false false ise tru yapacak
+                          });
+                        },
+                        icon: Icon(
+                          sifre_gozukme ? Icons.password_outlined : Icons.remove_red_eye , // şifre gözüküyorsa göz iconu , gözükmüyorsa şirfe gizle iconu göster
+                          color: renk("7F8C99"),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 InkWell(
