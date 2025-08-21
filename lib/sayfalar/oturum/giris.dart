@@ -41,7 +41,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                       borderRadius: BorderRadius.circular(100),
                       border: Border.all(color: renk("202F3A"), width: 15),
                     ),
-                    child: Icon(Icons.login, size: 45),
+                    child: Icon(Icons.person, size: 110, color: const Color.fromARGB(255, 128, 24, 17),),
                   ),
                 ),
                 Container(
@@ -95,10 +95,11 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     decoration: tema.InputDec(
                       "Şifrenizi girin",
                       Icons.vpn_key_outlined,
+                      //letterSpacing: 5,
                     ),
                     style: GoogleFonts.quicksand(
                       color: renk(metin_renk),
-                      letterSpacing: 5,
+                      // letterSpacing: 5,
                     ),
                   ),
                 ),

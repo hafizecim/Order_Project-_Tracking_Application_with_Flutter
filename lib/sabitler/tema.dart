@@ -9,16 +9,20 @@ class Tema {
       border: InputBorder.none,
       hintText: hintText, //"Kullanıcı Adı veya E-posta adresinizi girin",
       hintStyle: GoogleFonts.quicksand(color: renk(metin_renk)),
-      prefix: Icon(icon, color: renk("5ba7fb")), // solda
+      prefix: Padding(
+        padding: const EdgeInsets.only(
+          right: 12.0, // İstediğiniz boşluğu buraya yazın
+        ), 
+        child: Icon(icon, color: renk("5ba7fb")),
+      ), // solda
       // suffix: Icon(Icons.check_circle_outline, color: renk(metin_renk)), // sağda
     );
   }
 
-
-  inputBoxDec(){
+  inputBoxDec() {
     return BoxDecoration(
-                  color: renk("333443"),
-                  borderRadius: BorderRadius.circular(20),
+      color: renk("333443"),
+      borderRadius: BorderRadius.circular(20),
     );
   }
 }
