@@ -1,4 +1,5 @@
-import 'dart:io';
+// import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -55,7 +56,8 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: Platform.isWindows? genislik/1.5: genislik,
+                // width: Platform.isWindows? genislik/1.5: genislik,
+                width: (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) ? genislik / 1.5 : genislik,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -200,7 +202,8 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                         child: Container(
                           height: 50,
                          // width: MediaQuery.of(context).size.width / 1.5,
-                          width: Platform.isWindows? genislik / 3 : genislik / 1.5,
+                          // width: Platform.isWindows? genislik / 3 : genislik / 1.5,
+                          width: (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) ? genislik / 3  : genislik / 1.5,
 
                           //margin: EdgeInsets.symmetric(horizontal: 50),
                           padding: EdgeInsets.all(10),
