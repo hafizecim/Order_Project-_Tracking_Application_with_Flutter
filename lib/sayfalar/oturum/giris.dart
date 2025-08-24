@@ -155,7 +155,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     else if (sifre.length < 2) {
                       alt_mesaj(context, "Şifre uzunluğu 2 karekterden fazla olmalıdır.");
                     } else {
-                      oturum.oturum_ac(mail, sifre);
+                      oturum.oturum_ac(context, mail, sifre);
                     }
                   },
                   child: Container(
