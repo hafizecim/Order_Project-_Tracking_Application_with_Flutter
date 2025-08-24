@@ -5,6 +5,7 @@ class ProjeModel {
   String? projeAciliyet;
   String? projeDurum;
   String? projeDetay;
+  int? yuzde;
   String? dosyaYolu;
 
   ProjeModel(
@@ -14,6 +15,7 @@ class ProjeModel {
       this.projeAciliyet,
       this.projeDurum,
       this.projeDetay,
+      this.yuzde,
       this.dosyaYolu});
 
   ProjeModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class ProjeModel {
     projeAciliyet = json['proje_aciliyet'];
     projeDurum = json['proje_durum'];
     projeDetay = json['proje_detay'];
+    yuzde = json['yuzde'];
     dosyaYolu = json['dosya_yolu'];
   }
 
@@ -34,6 +37,7 @@ class ProjeModel {
     data['proje_aciliyet'] = this.projeAciliyet;
     data['proje_durum'] = this.projeDurum;
     data['proje_detay'] = this.projeDetay;
+    data['yuzde'] = this.yuzde;
     data['dosya_yolu'] = this.dosyaYolu;
     return data;
   }
