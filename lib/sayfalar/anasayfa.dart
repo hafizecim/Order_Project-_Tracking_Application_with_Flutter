@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({super.key});
@@ -12,7 +13,10 @@ class _AnaSayfaState extends State<AnaSayfa> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Text("Ana Sayfa"),
+        body: ElevatedButton(onPressed: () async {
+          GetStorage box = GetStorage();
+          await box.remove("kul");
+        }, child: Text("Çıkış Yap")),
       ),
     );
   }

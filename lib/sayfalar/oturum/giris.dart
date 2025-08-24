@@ -32,8 +32,14 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     oturum_durum(); // oturum açma işlemi kayıtlı ise anasayfaya direk yöneledirilsin
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // oturum_durum(); // oturum açma işlemi kayıtlı ise anasayfaya direk yöneledirilsin
     return SafeArea(
       child: Scaffold(
         body: Container(
