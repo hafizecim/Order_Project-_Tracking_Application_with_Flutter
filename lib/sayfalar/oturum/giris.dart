@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
 import 'package:order_project_tracking_application/sabitler/tema.dart';
+import 'package:order_project_tracking_application/servis/oturum.dart';
 
 class GirisSayfasi extends StatefulWidget {
   const GirisSayfasi({super.key});
@@ -12,6 +13,11 @@ class GirisSayfasi extends StatefulWidget {
 
 class _GirisSayfasiState extends State<GirisSayfasi> {
   Tema tema = Tema();
+
+  Oturum oturum = Oturum();
+  String mail = "";
+  String sifre = "";
+
   bool sifre_gozukme = false;
   @override
   Widget build(BuildContext context) {
@@ -74,6 +80,9 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     bottom: 5,
                   ),
                   child: TextFormField(
+
+                    onChanged: (value) => mail=value,
+
                     decoration: tema.InputDec(
                       "Kullanıcı Adı veya E-posta adresinizi girin",
                       Icons.people_alt_outlined,
@@ -99,6 +108,9 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     children: [
                       Expanded(
                         child: TextFormField(
+                          
+                          onChanged: (value) => sifre=value,
+
                           obscureText:
                               sifre_gozukme, // Şifre alanı için gizleme
                           decoration: tema.InputDec(
@@ -120,7 +132,10 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                           });
                         },
                         icon: Icon(
-                          sifre_gozukme ? Icons.password_outlined : Icons.remove_red_eye , // şifre gözüküyorsa göz iconu , gözükmüyorsa şirfe gizle iconu göster
+                          sifre_gozukme
+                              ? Icons.password_outlined
+                              : Icons
+                                    .remove_red_eye, // şifre gözüküyorsa göz iconu , gözükmüyorsa şirfe gizle iconu göster
                           color: renk("7F8C99"),
                         ),
                       ),
@@ -131,7 +146,17 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                   onTap: () {
                     // Giriş yapma işlemi burada gerçekleştirilecek
                     // Örneğin, kullanıcı adı ve şifre doğrulaması yapılabilir
-                    print("Giriş yapılıyor...");
+                    // print("Giriş yapılıyor...");
+                    if (mail.length < 3 && mail.contains("@")) {
+                      alt_mesaj(context, "Lütfen doğru E-mail adresi giriniz.");
+                    } /* else if (mail.contains("@")) { // mail adresinde @ işaret varmı yokmu
+                      alt_mesaj(context, "Lütfen doğru E-mail adresi giriniz.");
+                    }*/
+                    else if (sifre.length < 2) {
+                      alt_mesaj(context, "Şifre uzunluğu 2 karekterden fazla olmalıdır.");
+                    } else {
+                      oturum.oturum_ac(mail, sifre);
+                    }
                   },
                   child: Container(
                     height: 50,
