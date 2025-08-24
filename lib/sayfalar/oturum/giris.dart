@@ -21,8 +21,19 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
   String sifre = "";
 
   bool sifre_gozukme = false;
+
+  oturum_durum(){
+    bool x =  oturum_kontrol();
+    if(x){ // oturm açma işlemi bir kere yaptın ve get_storage ile kayıt oldu. Tekrar oturum sayfası açmak yerine anasayfaya yönledilirsin
+      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => AnaSayfa(),), (route)=> false);
+      });
+      }
+  }
+
   @override
   Widget build(BuildContext context) {
+    oturum_durum(); // oturum açma işlemi kayıtlı ise anasayfaya direk yöneledirilsin
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -162,9 +173,6 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                         // eğer oturum açma işlemi başarılı ise AnaSayfa ya kullanıcyı yönlendir
                         // MaterailPageRoute sayfalar arası geçiş yapmayı sağlar
                         Navigator.push(context, MaterialPageRoute(builder: (context) => AnaSayfa(),),);                      }
-
-
-
 
                       /*
                       // oturum açma vrilerini saklamak için

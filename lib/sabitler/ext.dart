@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const String arka_renk = "3E4050";
@@ -39,4 +40,16 @@ alt_mesaj(BuildContext context, String mesaj,{int tur = 0}) {
       margin: EdgeInsets.all(15),
     ),
   ); // ekran kenarından boşluk),);
+}
+
+bool oturum_kontrol() {
+  GetStorage box = GetStorage();
+  var sonuc = box.read("kul");
+
+  if(sonuc == null || sonuc.toString().length<20){
+    return false;
+
+  }else{
+    return true;
+  }
 }

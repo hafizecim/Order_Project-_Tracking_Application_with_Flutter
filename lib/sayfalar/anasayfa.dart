@@ -10,8 +10,10 @@ class AnaSayfa extends StatefulWidget {
 class _AnaSayfaState extends State<AnaSayfa> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text("Ana Sayfa"),
+    return SafeArea(
+      child: Scaffold(
+        body: Text("Ana Sayfa"),
+      ),
     );
   }
 }
