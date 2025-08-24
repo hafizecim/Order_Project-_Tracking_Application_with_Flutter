@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:order_project_tracking_application/model/proje_model.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
 import 'package:order_project_tracking_application/servis/veri_getir.dart';
 
@@ -55,10 +56,33 @@ VeriGetir veriGetir = VeriGetir();
 
                       ),
                       FutureBuilder( future:veriGetir.projeleri_getir(context),
-                        builder: (context, snapshot){
+                        builder: (context, AsyncSnapshot<List> snapshot){
+                          
                         if(snapshot.hasData){
-                          print(snapshot.data); // gelen verileri görmek için
-                          return Text("Tamamlandı");
+                          //print(snapshot.data); // gelen verileri görmek için
+                          List? sonuc=snapshot.data;
+                          if(sonuc!.first){ //sonuc.[0]
+                          List projeler = sonuc.last;
+                            if((projeler as List).length == 0 ){
+                              return Text("Proje Bulunamadı");
+
+                            }else{
+                              //return Text("Tamamlandı");
+                              return Expanded(
+                                child: ListView.builder(
+                                  itemCount:projeler.length , // projelerin uzunğu kadar çalıştır
+                                  itemBuilder: (context, index) {
+                                    ProjeModel proje = projeler[index];
+                                   return Text(proje.projeBaslik!);
+                                },),
+                              );
+                            }
+                            
+
+                          }else{
+                            return Text("Hata");
+                          }
+                          
                         }else{
                           return CircularProgressIndicator(); // dönen bir yuvarlak oluşturma
                         }
