@@ -141,21 +141,28 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                                 Text(
                                                   proje.projeBaslik!,
                                                   style: GoogleFonts.quicksand(
-                                                    fontWeight: FontWeight.w900,
+                                                    fontWeight: FontWeight.w800,
                                                     fontSize: 20,
                                                   ),
                                                 ),
                                                 Row(
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
                                                   children: [
                                                     Text(proje.projeAciliyet!),
                                                     Container(
-                                                      margin: EdgeInsets.symmetric(horizontal: 5),
+                                                      margin:
+                                                          EdgeInsets.symmetric(
+                                                            horizontal: 5,
+                                                          ),
                                                       width: 5,
                                                       height: 4,
                                                       decoration: BoxDecoration(
                                                         color: renk("c31432"),
-                                                        borderRadius: BorderRadius.circular(100)
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              100,
+                                                            ),
                                                       ),
                                                     ),
                                                     Text(
@@ -164,6 +171,19 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                                   ],
                                                 ),
                                               ],
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                child: IconButton(
+                                                  onPressed: () {},
+                                                  icon: Icon(
+                                                    Icons.chevron_right,
+                                                    color: renk("240b36"),
+                                                    size: 40,
+                                                  ),
+                                                ),
+                                                alignment: Alignment.centerRight,
+                                              ),
                                             ),
                                           ],
                                         ),
