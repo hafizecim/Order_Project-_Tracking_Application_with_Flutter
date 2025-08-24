@@ -123,9 +123,47 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                                 borderRadius:
                                                     BorderRadius.circular(100),
                                               ),
-                                              padding: EdgeInsets.only(right: 10, left: 10),
+                                              padding: EdgeInsets.only(
+                                                right: 10,
+                                                left: 10,
+                                              ),
                                               width: 50,
                                               height: 50,
+                                            ),
+                                            SizedBox(width: 10),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  proje.projeBaslik!,
+                                                  style: GoogleFonts.quicksand(
+                                                    fontWeight: FontWeight.w900,
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
+                                                Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+                                                    Text(proje.projeAciliyet!),
+                                                    Container(
+                                                      margin: EdgeInsets.symmetric(horizontal: 5),
+                                                      width: 5,
+                                                      height: 4,
+                                                      decoration: BoxDecoration(
+                                                        color: renk("c31432"),
+                                                        borderRadius: BorderRadius.circular(100)
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      proje.projeTeslimTarihi!,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
