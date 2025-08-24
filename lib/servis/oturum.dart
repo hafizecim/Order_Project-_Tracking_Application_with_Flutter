@@ -31,9 +31,6 @@ GetStorage box = GetStorage();
 
             await box.write("kul",gelen['bilgiler']);
 
-
-
-
             return true;
         }else{
             alt_mesaj(context, gelen['mesaj']); // site üzerinden gelen mesaj gösterilecek
