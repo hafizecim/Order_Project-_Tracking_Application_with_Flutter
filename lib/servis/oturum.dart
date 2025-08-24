@@ -29,7 +29,7 @@ GetStorage box = GetStorage();
         if(gelen['durum']=="ok"){
             alt_mesaj(context, "Oturum açma işlemi Başarılı", tur:1);
 
-            await box.write("kullanici",gelen['bilgiler']);
+            await box.write("kul",gelen['bilgiler']);
 
 
 

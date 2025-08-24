@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
 import 'package:order_project_tracking_application/sabitler/tema.dart';
@@ -143,7 +144,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
+                  onTap: () async {
                     // Giriş yapma işlemi burada gerçekleştirilecek
                     // Örneğin, kullanıcı adı ve şifre doğrulaması yapılabilir
                     // print("Giriş yapılıyor...");
@@ -155,7 +156,9 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     else if (sifre.length < 2) {
                       alt_mesaj(context, "Şifre uzunluğu 2 karekterden fazla olmalıdır.");
                     } else {
-                      oturum.oturum_ac(context, mail, sifre);
+                      await oturum.oturum_ac(context, mail, sifre);
+                      GetStorage box = GetStorage();
+                      print(box.read("kul"));
                     }
                   },
                   child: Container(

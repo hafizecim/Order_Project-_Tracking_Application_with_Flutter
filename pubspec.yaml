@@ -36,7 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^6.3.0
   http: ^1.5.0 # web de oluşturduğum uygulama bağlatı kurmas için C:\xampp\htdocs\script\order_project_tracking_web
-  get_storage: ^2.1.1
+  get_storage: ^2.1.1 
+
 
 dev_dependencies:
   flutter_test:
