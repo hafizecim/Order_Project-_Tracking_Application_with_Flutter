@@ -147,7 +147,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     // Giriş yapma işlemi burada gerçekleştirilecek
                     // Örneğin, kullanıcı adı ve şifre doğrulaması yapılabilir
                     // print("Giriş yapılıyor...");
-                    if (mail.length < 3 && mail.contains("@")) {
+                    if (mail.length < 3 || !mail.contains("@")) {
                       alt_mesaj(context, "Lütfen doğru E-mail adresi giriniz.");
                     } /* else if (mail.contains("@")) { // mail adresinde @ işaret varmı yokmu
                       alt_mesaj(context, "Lütfen doğru E-mail adresi giriniz.");
