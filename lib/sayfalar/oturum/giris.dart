@@ -3,6 +3,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
 import 'package:order_project_tracking_application/sabitler/tema.dart';
+import 'package:order_project_tracking_application/sayfalar/anasayfa.dart';
 import 'package:order_project_tracking_application/servis/oturum.dart';
 
 class GirisSayfasi extends StatefulWidget {
@@ -156,9 +157,20 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     else if (sifre.length < 2) {
                       alt_mesaj(context, "Şifre uzunluğu 2 karekterden fazla olmalıdır.");
                     } else {
-                      await oturum.oturum_ac(context, mail, sifre);
+                      bool durum = await oturum.oturum_ac(context, mail, sifre);
+                      if(durum){
+                        // eğer oturum açma işlemi başarılı ise AnaSayfa ya kullanıcyı yönlendir
+                        // MaterailPageRoute sayfalar arası geçiş yapmayı sağlar
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => AnaSayfa(),),);                      }
+
+
+
+
+                      /*
+                      // oturum açma vrilerini saklamak için
                       GetStorage box = GetStorage();
                       print(box.read("kul"));
+                      */
                     }
                   },
                   child: Container(
