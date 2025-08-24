@@ -19,6 +19,7 @@ class Oturum {
       // print(sonuc.body); // terminal kontrol için
       Map gelen = jsonDecode(sonuc.body);
         if(gelen['durum']=="ok"){
+            alt_mesaj(context, "Oturum açma işlemi Başarılı", tur:1);
             return true;
         }else{
             alt_mesaj(context, gelen['mesaj']); // site üzerinden gelen mesaj gösterilecek

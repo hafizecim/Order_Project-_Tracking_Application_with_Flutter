@@ -21,7 +21,7 @@ class renk extends Color {
   renk(final String renk_kodu) : super(_donustur(renk_kodu));
 }
 
-alt_mesaj(BuildContext context, String mesaj) {
+alt_mesaj(BuildContext context, String mesaj,{int tur = 0}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(
@@ -29,7 +29,7 @@ alt_mesaj(BuildContext context, String mesaj) {
         style: GoogleFonts.quicksand(fontSize: 15),
         textAlign: TextAlign.center,
       ),
-      backgroundColor: renk("c31432"),
+      backgroundColor: tur==0? renk("c31432"): renk("15400e"),
       //duration: Duration(milliseconds: 100),
       behavior:
           SnackBarBehavior.floating, // yukarı kaldırır, radius daha net görünür
