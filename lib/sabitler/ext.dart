@@ -6,7 +6,7 @@ const String metin_renk = "7F8C99";
 const String api_key = "h1a2f3i4z9e8s7e6n5y4i3l";
 const String site_link = "http://192.168.0.17/script/order_project_tracking_web/"; //127.0.0.1
 const String api_link =
-    "http://192.168.0.17/script/order_project_tracking_web/islemler/baglan.php"; //127.0.0.1
+    "http://192.168.0.17/script/order_project_tracking_web/islemler/islem.php"; //127.0.0.1
 
 class renk extends Color {
   static int _donustur(String hexColor) {
