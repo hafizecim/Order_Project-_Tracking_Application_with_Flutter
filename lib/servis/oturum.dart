@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:order_project_tracking_application/model/kullanici.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
 
 class Oturum {
@@ -17,7 +18,10 @@ class Oturum {
 
     if (sonuc.statusCode == 200) {//200 bağlantı işlemi başarılı ise
       // print(sonuc.body); // terminal kontrol için
-      Map gelen = jsonDecode(sonuc.body);
+      Map <String , dynamic> gelen = jsonDecode(sonuc.body);
+      Kullanici kullanici = Kullanici.fromJson(gelen['bilgiler']); 
+      print(kullanici.kulIsim);
+      print(gelen);
         if(gelen['durum']=="ok"){
             alt_mesaj(context, "Oturum açma işlemi Başarılı", tur:1);
             return true;
