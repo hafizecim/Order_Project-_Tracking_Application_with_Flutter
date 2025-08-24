@@ -73,7 +73,16 @@ VeriGetir veriGetir = VeriGetir();
                                   itemCount:projeler.length , // projelerin uzunğu kadar çalıştır
                                   itemBuilder: (context, index) {
                                     ProjeModel proje = projeler[index];
-                                   return Text(proje.projeBaslik!);
+                                   // return Text(proje.projeBaslik!);
+                                   return Container(
+                                    padding: EdgeInsets.all(15),
+                                    margin: EdgeInsets.only(left:15, right: 15, top: 10 ),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: renk('240b36'), width: 1),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Text(proje.projeBaslik!),
+                                   );
                                 },),
                               );
                             }
