@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:order_project_tracking_application/model/kullanici.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Oturum {
+
+GetStorage box = GetStorage();
+
  Future<bool> oturum_ac(BuildContext context, String mail, String sifre) async {
     print(api_link + "?api_key=" + api_key);
     http.Response sonuc = await http.post(
@@ -24,6 +28,12 @@ class Oturum {
       print(gelen);
         if(gelen['durum']=="ok"){
             alt_mesaj(context, "Oturum açma işlemi Başarılı", tur:1);
+
+            await box.write("kullanici",gelen['bilgiler']);
+
+
+
+
             return true;
         }else{
             alt_mesaj(context, gelen['mesaj']); // site üzerinden gelen mesaj gösterilecek
