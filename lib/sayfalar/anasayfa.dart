@@ -203,7 +203,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                             i++
                                           ) {
                                             ProjeModel proje = projeler[i];
-                                            ogeler.add(projeBox(proje));
+                                            ogeler.add(projeBox(context, proje));
                                           }
 
                                           return Column(children: ogeler);

@@ -3,13 +3,15 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:order_project_tracking_application/model/proje_model.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
+import 'package:order_project_tracking_application/sayfalar/oturum/proje/proje_detay.dart';
 
-Widget projeBox(ProjeModel proje) {
+Widget projeBox(BuildContext context ,ProjeModel proje) {
   bool bittimi = proje.projeDurum =="Bitti"? true : false;
   Color metin_renk = bittimi? Colors.white: Colors.black;
   return InkWell(
     onTap: () {
-      print(proje.projeBaslik! + ": Tıklandı");
+      // print(proje.projeBaslik! + ": Tıklandı");
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ProjeDetay(proje)));
     },
     child: Container(
       padding: EdgeInsets.all(15),

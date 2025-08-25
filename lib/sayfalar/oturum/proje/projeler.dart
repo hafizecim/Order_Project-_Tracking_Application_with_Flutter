@@ -202,7 +202,7 @@ class _ProjelerSayfasiState extends State<ProjelerSayfasi> {
                                         i++
                                       ) {
                                         ProjeModel proje = projeler[i];
-                                        ogeler.add(projeBox(proje));
+                                        ogeler.add(projeBox(context, proje));
                                       }
 
                                       return Column(children: ogeler);
