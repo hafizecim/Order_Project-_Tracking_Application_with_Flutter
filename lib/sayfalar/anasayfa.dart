@@ -239,7 +239,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                 ),
                                 FutureBuilder(
                                   future: veriGetir
-                                      .siparisleri_getir(), // context sildim
+                                      .siparisleri_getir(limit: "2,3"), // 2. den sonrasını getir (6 ve 5 yukarıda göründüğü için)
+                                      // kaçıncıdan sonra kaç tane getimek isitiyorsun. : 2. den sonra 3 tane getir
                                   builder: (context, AsyncSnapshot<List> snapshot) {
                                     if (snapshot.hasData) {
                                       //print(snapshot.data); // gelen verileri görmek için
