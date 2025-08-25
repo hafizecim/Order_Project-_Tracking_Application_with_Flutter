@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:order_project_tracking_application/model/proje_model.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
+import 'package:order_project_tracking_application/sayfalar/oturum/proje/proje_detay.dart';
 import 'package:order_project_tracking_application/servis/veri_getir.dart';
 import 'package:order_project_tracking_application/widget/projeBox.dart';
 
@@ -77,73 +78,78 @@ class _ProjelerSayfasiState extends State<ProjelerSayfasi> {
                                 itemCount: projeler.length,
                                 itemBuilder: (context, index) {
                                   ProjeModel proje = projeler[index];
-                                  return Container(
-                                    width:
-                                        MediaQuery.of(context).size.width - 30,
-                                    decoration: BoxDecoration(
-                                      color: renk(bordo),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    padding: EdgeInsets.all(15),
-                                    margin: EdgeInsets.only(
-                                      right: 15,
-                                      left: 15,
-                                      bottom: 15,
-                                      top: 15,
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              proje.projeTeslimTarihi!,
-                                              style: GoogleFonts.quicksand(
-                                                color: Colors.white,
-                                                fontSize: 15,
+                                  return InkWell(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProjeDetay(proje)));
+                                    },
+                                    child: Container(
+                                      width:
+                                          MediaQuery.of(context).size.width - 30,
+                                      decoration: BoxDecoration(
+                                        color: renk(bordo),
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      padding: EdgeInsets.all(15),
+                                      margin: EdgeInsets.only(
+                                        right: 15,
+                                        left: 15,
+                                        bottom: 15,
+                                        top: 15,
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                proje.projeTeslimTarihi!,
+                                                style: GoogleFonts.quicksand(
+                                                  color: Colors.white,
+                                                  fontSize: 15,
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(height: 5),
-                                            Text(
-                                              proje.projeBaslik!,
-                                              style: GoogleFonts.quicksand(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w700,
+                                              SizedBox(height: 5),
+                                              Text(
+                                                proje.projeBaslik!,
+                                                style: GoogleFonts.quicksand(
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: renk(lacivert),
-                                            borderRadius: BorderRadius.circular(
-                                              100,
-                                            ),
-                                            border: Border.all(
-                                              width: 1,
-                                              color: Colors.white,
-                                            ),
+                                            ],
                                           ),
-                                          child: Center(
-                                            child: Text(
-                                              proje.yuzde.toString() + "%",
-                                              style: GoogleFonts.bebasNeue(
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: renk(lacivert),
+                                              borderRadius: BorderRadius.circular(
+                                                100,
+                                              ),
+                                              border: Border.all(
+                                                width: 1,
                                                 color: Colors.white,
-                                                fontSize: 25,
-                                                fontWeight: FontWeight.w900,
                                               ),
                                             ),
+                                            child: Center(
+                                              child: Text(
+                                                proje.yuzde.toString() + "%",
+                                                style: GoogleFonts.bebasNeue(
+                                                  color: Colors.white,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.w900,
+                                                ),
+                                              ),
+                                            ),
+                                            width: 60,
+                                            height: 60,
                                           ),
-                                          width: 60,
-                                          height: 60,
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   );
                                 },
