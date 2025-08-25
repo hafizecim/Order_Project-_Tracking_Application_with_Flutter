@@ -46,16 +46,17 @@ class VeriGetir {
     }
   }
 
-  Future<List> projeleri_getir({bool son_projeler = true}) async {
+  Future<List> projeleri_getir({String order = "proje_id DESC", String limit = "3"}) async {
     // Buiild context sildim
-
+    
+/* {bool son_projeler = true}
     String limit = "";
     String order = "";
     if (son_projeler) {
       limit = "3";
       order = "proje_id DESC";
     }
-
+*/
     Map veri = await istek(
       0,
       limit: limit,
@@ -73,16 +74,17 @@ class VeriGetir {
     }
   }
 
-  Future<List> siparisleri_getir({bool son_siparisler = true}) async { // BuildContext context sildim
+  Future<List> siparisleri_getir({String order = "sip_id DESC", String limit = "3"}) async { // BuildContext context sildim
 
+/* {bool son_siparisler = true}
   String limit = "";
     String order = "";
     if (son_siparisler) {
       limit = "3";
-      order = "sip_id DESC";
+      order = "sip_id DESC"; // son eklenen sip getir asc olursa ilk eklene siparşleri getir
     }
 
-
+*/
     Map veri = await istek(1, limit: limit, order: order,);
     List<SiparisModel> siparisler = [];
     if (veri['durum'] == 'ok') {

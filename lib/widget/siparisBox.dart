@@ -26,7 +26,7 @@ Widget siparisBox(SiparisModel siparis) {
               ),
             ),
             decoration: BoxDecoration(
-              color: renk(arka_renk),
+              color: renk(bordo),
               borderRadius: BorderRadius.circular(100),
             ),
             padding: EdgeInsets.only(right: 10, left: 10),

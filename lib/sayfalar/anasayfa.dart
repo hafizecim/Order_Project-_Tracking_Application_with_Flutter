@@ -39,7 +39,98 @@ class _AnaSayfaState extends State<AnaSayfa> {
           child: Column(
             // 🔹 Burada "child:" kullanıyoruz
             children: [
-              Container(height: 120),
+              Container(
+                height: 120,
+                child: FutureBuilder(
+                  future: veriGetir.siparisleri_getir(limit: "2"),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
+                        if (snapshot.hasData) {
+                          List? sonuc = snapshot.data;
+                          if (sonuc!.first) {
+                            List siparisler = sonuc.last;
+                            if (siparisler.length == 0) {
+                              return Text("SİPARİŞ BULUNAMADI");
+                            } else {
+                              return ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: siparisler.length,
+                                itemBuilder: (context, index) {
+                                  SiparisModel siparis = siparisler[index];
+                                  return Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2.3,
+                                    decoration: BoxDecoration(
+                                      color: renk(bordo),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    padding: EdgeInsets.all(15),
+                                    margin: EdgeInsets.all(15),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Text(
+                                              siparis.sipTeslimTarihi!,
+                                              style: GoogleFonts.quicksand(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                            SizedBox(height: 5),
+                                            Text(
+                                              siparis.sipBaslik!,
+                                              style: GoogleFonts.quicksand(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: renk(lacivert),
+                                            borderRadius: BorderRadius.circular(
+                                              100,
+                                            ),
+                                            border: Border.all(
+                                              width: 1,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              siparis.yuzde.toString() + "%",
+                                              style: GoogleFonts.bebasNeue(
+                                                color: Colors.white,
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                          ),
+                                          width: 60,
+                                          height: 60,
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            }
+                          } else {
+                            return Text("Hata");
+                          }
+                        } else {
+                          return CircularProgressIndicator(); // dönen bir yuvarlak oluşturma
+                        }
+                      },
+                ),
+              ),
               Expanded(
                 child: Container(
                   padding: EdgeInsets.only(top: 30, left: 10, right: 10),
@@ -84,7 +175,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                   ],
                                 ),
                                 FutureBuilder(
-                                  future: veriGetir.projeleri_getir(), // context sildim 
+                                  future: veriGetir
+                                      .projeleri_getir(), // context sildim
                                   builder: (context, AsyncSnapshot<List> snapshot) {
                                     if (snapshot.hasData) {
                                       //print(snapshot.data); // gelen verileri görmek için
@@ -96,19 +188,19 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                           return Text("Proje Bulunamadı");
                                         } else {
                                           //return Text("Tamamlandı");
-                            
-                                          List<Widget> ogeler=[];
-                                           for(var i = 0; i <= projeler.length-1;i++){
+
+                                          List<Widget> ogeler = [];
+                                          for (
+                                            var i = 0;
+                                            i <= projeler.length - 1;
+                                            i++
+                                          ) {
                                             ProjeModel proje = projeler[i];
                                             ogeler.add(projeBox(proje));
-                            
-                                           }
-                            
-                                          return Column(
-                                            children: ogeler,
-                                          );
-                                              }
-                                           
+                                          }
+
+                                          return Column(children: ogeler);
+                                        }
                                       } else {
                                         return Text("Hata");
                                       }
@@ -117,8 +209,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                     }
                                   },
                                 ),
-                              
-                                SizedBox(height: 40,),
+
+                                SizedBox(height: 40),
                                 // Sipariş alanı
                                 Row(
                                   mainAxisAlignment:
@@ -146,7 +238,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                   ],
                                 ),
                                 FutureBuilder(
-                                  future: veriGetir.siparisleri_getir(), // context sildim
+                                  future: veriGetir
+                                      .siparisleri_getir(), // context sildim
                                   builder: (context, AsyncSnapshot<List> snapshot) {
                                     if (snapshot.hasData) {
                                       //print(snapshot.data); // gelen verileri görmek için
@@ -158,19 +251,20 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                           return Text("Sipariş Bulunamadı");
                                         } else {
                                           //return Text("Tamamlandı");
-                            
-                                          List<Widget> ogeler=[];
-                                           for(var i = 0; i <= siparisler.length-1;i++){
-                                            SiparisModel siparis = siparisler[i];
+
+                                          List<Widget> ogeler = [];
+                                          for (
+                                            var i = 0;
+                                            i <= siparisler.length - 1;
+                                            i++
+                                          ) {
+                                            SiparisModel siparis =
+                                                siparisler[i];
                                             ogeler.add(siparisBox(siparis));
-                            
-                                           }
-                            
-                                          return Column(
-                                            children: ogeler,
-                                          );
-                                              }
-                                           
+                                          }
+
+                                          return Column(children: ogeler);
+                                        }
                                       } else {
                                         return Text("Hata");
                                       }
@@ -184,8 +278,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                           ),
                         ),
                       ),
-                      
-                      ],
+                    ],
                   ),
                 ),
               ),
