@@ -5,6 +5,8 @@ import 'package:order_project_tracking_application/model/siparis_model.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
 
 Widget siparisBox(SiparisModel siparis) {
+  bool bittimi = siparis.sipDurum =="Bitti"? true : false;
+  Color metin_renk = bittimi? Colors.white: Colors.black;
   return InkWell(
     onTap: () {
       print(siparis.sipBaslik! + ": Tıklandı");
@@ -13,9 +15,10 @@ Widget siparisBox(SiparisModel siparis) {
       padding: EdgeInsets.all(15),
       margin: EdgeInsets.only(left: 15, right: 15, top: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: renk('240b36'), width: 1),
+        border: Border.all(color: renk(lacivert), width: 1),
         borderRadius: BorderRadius.circular(20),
-        color: siparis.sipDurum== "Bitti" ? renk("0d730d"): Colors.transparent,
+        //color: siparis.sipDurum== "Bitti" ? renk("0d730d"): Colors.transparent,
+        color: bittimi ? renk("0d730d"): Colors.transparent,
       ),
       child: Row(
         children: [
@@ -46,23 +49,23 @@ Widget siparisBox(SiparisModel siparis) {
                 siparis.sipBaslik!,
                 style: GoogleFonts.quicksand(
                   fontWeight: FontWeight.w800,
-                  fontSize: 20,
+                  fontSize: 20, color: metin_renk
                 ),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(siparis.sipAciliyet!),
+                  Text(siparis.sipAciliyet!, style: GoogleFonts.quicksand(color: metin_renk),),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 5),
                     width: 5,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: renk("c31432"),
+                      color: renk(bordo),
                       borderRadius: BorderRadius.circular(100),
                     ),
                   ),
-                  Text(siparis.sipTeslimTarihi!),
+                  Text(siparis.sipTeslimTarihi!, style: GoogleFonts.quicksand(color: metin_renk)),
                 ],
               ),
             ],
@@ -73,7 +76,7 @@ Widget siparisBox(SiparisModel siparis) {
                 onPressed: () {},
                 icon: Icon(
                   Icons.chevron_right,
-                  color: renk("240b36"),
+                  color: renk(lacivert),
                   size: 40,
                 ),
               ),
