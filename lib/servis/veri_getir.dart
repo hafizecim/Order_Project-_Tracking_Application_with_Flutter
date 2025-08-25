@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:order_project_tracking_application/model/kullanici.dart';
+// import 'package:order_project_tracking_application/model/kullanici.dart';
 import 'package:order_project_tracking_application/model/proje_model.dart';
 import 'package:order_project_tracking_application/model/siparis_model.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
@@ -11,7 +11,7 @@ import 'package:order_project_tracking_application/sabitler/ext.dart';
 class VeriGetir {
   GetStorage box = GetStorage();
 
-  Future<Map> istek(int tur) async {
+  Future<Map> istek(int tur, {String order = "", String limit = ""}) async {
     Map param = {};
 
     if (tur == 0) {
@@ -19,6 +19,15 @@ class VeriGetir {
     } else if (tur == 1) {
       param = {'siparisleri_getir': 'true'};
     }
+
+    if (limit.isNotEmpty) {
+      param['limit'] = limit;
+    }
+
+    if (order.isNotEmpty) {
+      param['sirala'] = order;
+    }
+
     print(api_link + "?api_key=" + api_key);
     http.Response sonuc = await http.post(
       Uri.parse(api_link + "?api_key=" + api_key),
@@ -37,8 +46,21 @@ class VeriGetir {
     }
   }
 
-  Future<List> projeleri_getir(BuildContext context) async {
-    Map veri = await istek(0);
+  Future<List> projeleri_getir({bool son_projeler = true}) async {
+    // Buiild context sildim
+
+    String limit = "";
+    String order = "";
+    if (son_projeler) {
+      limit = "3";
+      order = "proje_id DESC";
+    }
+
+    Map veri = await istek(
+      0,
+      limit: limit,
+      order: order,
+    ); // Son eklenen başa gelecek şekilde sırala limit 3
     List<ProjeModel> projeler = [];
     if (veri['durum'] == 'ok') {
       for (var element in veri['projeler']) {
@@ -51,8 +73,17 @@ class VeriGetir {
     }
   }
 
-  Future<List> siparisleri_getir(BuildContext context) async {
-    Map veri = await istek(1);
+  Future<List> siparisleri_getir({bool son_siparisler = true}) async { // BuildContext context sildim
+
+  String limit = "";
+    String order = "";
+    if (son_siparisler) {
+      limit = "3";
+      order = "sip_id DESC";
+    }
+
+
+    Map veri = await istek(1, limit: limit, order: order,);
     List<SiparisModel> siparisler = [];
     if (veri['durum'] == 'ok') {
       for (var element in veri['siparisler']) {
@@ -64,5 +95,4 @@ class VeriGetir {
       // alt_mesaj(context, veri['mesaj']); // Future<Map>
     }
   }
-
 }

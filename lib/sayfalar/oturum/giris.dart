@@ -2,7 +2,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
+// import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
 import 'package:order_project_tracking_application/sabitler/tema.dart';

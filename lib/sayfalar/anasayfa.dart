@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
+// import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:order_project_tracking_application/model/proje_model.dart';
 import 'package:order_project_tracking_application/model/siparis_model.dart';
@@ -84,7 +84,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                   ],
                                 ),
                                 FutureBuilder(
-                                  future: veriGetir.projeleri_getir(context),
+                                  future: veriGetir.projeleri_getir(), // context sildim 
                                   builder: (context, AsyncSnapshot<List> snapshot) {
                                     if (snapshot.hasData) {
                                       //print(snapshot.data); // gelen verileri görmek için
@@ -146,7 +146,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                   ],
                                 ),
                                 FutureBuilder(
-                                  future: veriGetir.siparisleri_getir(context),
+                                  future: veriGetir.siparisleri_getir(), // context sildim
                                   builder: (context, AsyncSnapshot<List> snapshot) {
                                     if (snapshot.hasData) {
                                       //print(snapshot.data); // gelen verileri görmek için
