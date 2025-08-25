@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:order_project_tracking_application/model/proje_model.dart';
 import 'package:order_project_tracking_application/model/siparis_model.dart';
 import 'package:order_project_tracking_application/sabitler/ext.dart';
+import 'package:order_project_tracking_application/sayfalar/oturum/proje/projeler.dart';
+import 'package:order_project_tracking_application/sayfalar/oturum/siparis/siparisler.dart';
 import 'package:order_project_tracking_application/servis/veri_getir.dart';
 import 'package:order_project_tracking_application/widget/projeBox.dart';
 import 'package:order_project_tracking_application/widget/siparisBox.dart';
@@ -22,6 +24,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        
         //backgroundColor: renk(arka_renk),
         body: Container(
           decoration: BoxDecoration(
@@ -73,6 +76,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               siparis.sipTeslimTarihi!,
@@ -162,7 +167,9 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                       ),
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProjelerSayfasi()));
+                                      },
                                       child: Text(
                                         "Tüm Projeler",
                                         style: GoogleFonts.quicksand(
@@ -225,7 +232,9 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                       ),
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => SiparislerSayfasi()));
+                                      },
                                       child: Text(
                                         "Tüm Siparişler",
                                         style: GoogleFonts.quicksand(

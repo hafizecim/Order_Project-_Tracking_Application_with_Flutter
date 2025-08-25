@@ -15,6 +15,7 @@ Widget siparisBox(SiparisModel siparis) {
       decoration: BoxDecoration(
         border: Border.all(color: renk('240b36'), width: 1),
         borderRadius: BorderRadius.circular(20),
+        color: siparis.sipDurum== "Bitti" ? renk("0d730d"): Colors.transparent,
       ),
       child: Row(
         children: [
@@ -28,10 +29,13 @@ Widget siparisBox(SiparisModel siparis) {
             decoration: BoxDecoration(
               color: renk(bordo),
               borderRadius: BorderRadius.circular(100),
+              
             ),
             padding: EdgeInsets.only(right: 10, left: 10),
             width: 50,
             height: 50,
+            
+        
           ),
           SizedBox(width: 10),
           Column(

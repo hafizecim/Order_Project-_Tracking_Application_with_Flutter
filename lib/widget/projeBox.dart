@@ -15,6 +15,15 @@ Widget projeBox(ProjeModel proje) {
       decoration: BoxDecoration(
         border: Border.all(color: renk('240b36'), width: 1),
         borderRadius: BorderRadius.circular(20),
+        //color: proje.yuzde == 100 ? renk("7F8C99"): Colors.transparent,
+        color: proje.projeDurum== "Bitti" ? renk("0d730d"): Colors.transparent,
+        /*
+        color: proje.yuzde == 100 
+        ? renk("7F8C99")          // %100 tamamlandı -> gri
+        : (proje.yuzde! >= 50
+        ? renk("ebe939")      // %50–99 -> sarı
+        : renk("ea0000")),        // %0–49 -> kırmızı
+        */
       ),
       child: Row(
         children: [
